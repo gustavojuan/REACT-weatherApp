@@ -9,17 +9,17 @@ import { CLOUD,
 
 const stateToIconName = (weatherState)=>{
     switch (weatherState) {
-        case CLOUD:            
+        case 'cloud':            
             return "cloud";  
-        case CLOUDY:
+        case 'cloudy':
             return "cloudy";  
-        case SUN:
+        case 'sun':
             return "day-sunny";   
-        case RAIN:
+        case 'rain':
             return "rain";  
-        case SNOW:
+        case 'snow':
             return "snow";   
-        case WINDY:
+        case 'windy':
             return "windy";   
         default:
             return "day-sunny";          

@@ -19,7 +19,7 @@ const stateToIconName = (weatherState)=>{
             return "rain";  
         case SNOW:
             return "snow";   
-        case WINDY:
+        case 'windy':
             return "windy";   
         default:
             return "day-sunny";          
