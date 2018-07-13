@@ -16,6 +16,13 @@ const data1 = {
 
 }
 
+const data2 = {
+    temperature: 35,
+    weatherState: WINDY,
+    humidity: 50,
+    wind: '65 m/s'
+
+}
 
 
 class WeatherLocation extends Component {
@@ -28,7 +35,7 @@ class WeatherLocation extends Component {
         }
     }
 
-    getWeatherState = (weather) => {
+    getWeatherState = (weather)=>{
         return SUN;
     }
 
@@ -39,7 +46,7 @@ class WeatherLocation extends Component {
 
         const data = {
             humidity,
-            temperature: temp,
+            temperature:temp,
             weatherState,
             wind: `${speed} m/s`
         }
@@ -48,11 +55,21 @@ class WeatherLocation extends Component {
 
     handleUpdateClick = () => {
         fetch(apiweather)
-            .then(data => (data.json()))
+            .then(data => {
+
+                return data.json();
+            })
             .then(weather_data => {
                 const data = this.getData(weather_data);
-                this.setState({ data: data });             
+                this.setState({ data: data });
+                console.log(data);
+                debugger;
             })
+
+        /*   
+          this.setState({           
+              data: data2
+          }); */
     }
 
     render = () => {

@@ -1,0 +1,11 @@
+.weatherLocationCont{
+    width: 450px;
+    padding: 15px;
+}
+.locationCont{
+    width: 100%;
+    height: 35px;
+    text-align: left;
+    background-color: tomato;
+   
+}

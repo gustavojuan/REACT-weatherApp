@@ -1,0 +1,15 @@
+.weatherDataCont{
+    background-color: tomato;
+    width: 400px;
+}
+
+.weatherExtraInfoCont{
+    background-color: orange;
+    width: 60%;
+    float: left;
+}
+
+.weatherTemperatureCont{
+    background-color: goldenrod;
+    width:40%;
+}

@@ -5,8 +5,8 @@ import './styles.css';
 import { WINDY, SNOW, SUN } from './../../constants/weathers';
 
 const apikey = "a8789edde3a4b51f9d270d4710f105c0"
-const location = "Potries,es"
-const apiweather = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apikey}`;
+const location = "Gandia,es"
+const apiweather = `https://samples.openweathermap.org/data/2.5/weather?q=${location}&appid=${apikey}`;
 
 const data1 = {
     temperature: 20,
@@ -16,6 +16,13 @@ const data1 = {
 
 }
 
+const data2 = {
+    temperature: 35,
+    weatherState: WINDY,
+    humidity: 50,
+    wind: '65 m/s'
+
+}
 
 
 class WeatherLocation extends Component {
@@ -28,31 +35,16 @@ class WeatherLocation extends Component {
         }
     }
 
-    getWeatherState = (weather) => {
-        return SUN;
-    }
-
-    getData = (weather_data) => {
-        const { humidity, temp } = weather_data.main;
-        const { speed } = weather_data.wind;
-        const weatherState = this.getWeatherState(this.weather);
-
-        const data = {
-            humidity,
-            temperature: temp,
-            weatherState,
-            wind: `${speed} m/s`
-        }
-        return data;
-    }
-
     handleUpdateClick = () => {
-        fetch(apiweather)
-            .then(data => (data.json()))
-            .then(weather_data => {
-                const data = this.getData(weather_data);
-                this.setState({ data: data });             
-            })
+        fetch(apiweather).then(data=>{
+            console.log(data);
+            debugger;
+        })
+            
+        /*   
+          this.setState({           
+              data: data2
+          }); */
     }
 
     render = () => {
