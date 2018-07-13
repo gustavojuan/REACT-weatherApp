@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
+import { convert } from 'convert-units';
 import Location from './Location';
 import WeatherData from './WeatherData/index';
-import transformWeather from './../../services/transformWeather';
-import { WINDY, SNOW, SUN } from './../../constants/weathers';
 import './styles.css';
-
+import { WINDY, SNOW, SUN } from './../../constants/weathers';
 
 const apikey = "a8789edde3a4b51f9d270d4710f105c0"
 const location = "Potries,es"
@@ -19,6 +18,7 @@ const data1 = {
 }
 
 
+
 class WeatherLocation extends Component {
 
     constructor() {
@@ -29,12 +29,34 @@ class WeatherLocation extends Component {
         }
     }
 
+    getTemp = (kelvin) => {
+        return convert(kelvin).from('l').to('ml');
+       }
+
+    getWeatherState = (weather) => {
+        return SUN;
+    }
+
+    getData = (weather_data) => {
+        const { humidity, temp } = weather_data.main;
+        const { speed } = weather_data.wind;
+        const weatherState = this.getWeatherState(this.weather);
+        const temperature = this.getTemp(temp);
+
+        const data = {
+            humidity,
+            temperature:temp,
+            weatherState,
+            wind: `${speed} m/s`
+        }
+        return data;
+    }
 
     handleUpdateClick = () => {
         fetch(apiweather)
             .then(data => (data.json()))
             .then(weather_data => {
-                const data = transformWeather(weather_data);
+                const data = this.getData(weather_data);
                 this.setState({ data: data });             
             })
     }

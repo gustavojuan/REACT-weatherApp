@@ -19,6 +19,7 @@ const data1 = {
 }
 
 
+
 class WeatherLocation extends Component {
 
     constructor() {

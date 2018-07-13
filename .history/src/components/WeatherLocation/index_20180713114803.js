@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Location from './Location';
 import WeatherData from './WeatherData/index';
 import transformWeather from './../../services/transformWeather';
-import { WINDY, SNOW, SUN } from './../../constants/weathers';
 import './styles.css';
 
 
@@ -17,6 +16,7 @@ const data1 = {
     wind: '10 m/s'
 
 }
+
 
 
 class WeatherLocation extends Component {
@@ -34,7 +34,7 @@ class WeatherLocation extends Component {
         fetch(apiweather)
             .then(data => (data.json()))
             .then(weather_data => {
-                const data = transformWeather(weather_data);
+                const data = this.getData(weather_data);
                 this.setState({ data: data });             
             })
     }
