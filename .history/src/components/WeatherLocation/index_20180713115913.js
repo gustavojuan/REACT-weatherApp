@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
-import CircularProgress from 'material-ui/CircularProgress'
 import Location from './Location';
 import WeatherData from './WeatherData/index';
 import transformWeather from './../../services/transformWeather';
+import { WINDY, SNOW, SUN } from './../../constants/weathers';
 import './styles.css';
 
-const url = "https://api.openweathermap.org/data/2.5/weather"
+
 const apikey = "a8789edde3a4b51f9d270d4710f105c0"
-const city = "Potries,es"
-const apiweather = `${url}?q=${city}&appid=${apikey}`;
+const location = "Potries,es"
+const apiweather = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apikey}`;
 
+const data1 = {
+    temperature: 20,
+    weatherState: SUN,
+    humidity: 85,
+    wind: '10 m/s'
 
+}
 
 
 class WeatherLocation extends Component {
@@ -18,10 +24,10 @@ class WeatherLocation extends Component {
     constructor() {
         super();
         this.state = {
-            city,
-            data: null
+            city: 'Buenos Aires',
+            data: data1
         }
-        
+        console.log('constructor');
     }
 
 
@@ -30,22 +36,29 @@ class WeatherLocation extends Component {
             .then(data => (data.json()))
             .then(weather_data => {
                 const data = transformWeather(weather_data);
-                this.setState({ data:data });             
+                this.setState({ data: data });             
             })
     }
 
     
     componentWillMount() {
-        this.handleUpdateClick();
-    }    
+        console.log('componentWillMount');
+    }
+
+    componentDidMount() {
+        console.log('componentWillMount');
+    }
+    
     
 
-    render = () => {        
+    render = () => {
+        console.log('render');
         const { city, data } = this.state;
         return (
             <div className='weatherLocationCont'>
                 <Location city={city} />
-                {data ? <WeatherData data={data} /> : <CircularProgress  /> }                
+                <WeatherData data={data} />
+                <button onClick={this.handleUpdateClick}>Actualizar</button>
             </div>
         );
         

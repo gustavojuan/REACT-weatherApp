@@ -5,10 +5,10 @@ import WeatherData from './WeatherData/index';
 import transformWeather from './../../services/transformWeather';
 import './styles.css';
 
-const url = "https://api.openweathermap.org/data/2.5/weather"
+
 const apikey = "a8789edde3a4b51f9d270d4710f105c0"
-const city = "Potries,es"
-const apiweather = `${url}?q=${city}&appid=${apikey}`;
+const location = "Potries,es"
+const apiweather = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apikey}`;
 
 
 
@@ -18,7 +18,7 @@ class WeatherLocation extends Component {
     constructor() {
         super();
         this.state = {
-            city,
+            city: 'Buenos Aires',
             data: null
         }
         
@@ -40,7 +40,8 @@ class WeatherLocation extends Component {
     }    
     
 
-    render = () => {        
+    render = () => {
+        console.log('render');
         const { city, data } = this.state;
         return (
             <div className='weatherLocationCont'>

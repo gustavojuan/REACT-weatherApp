@@ -4,7 +4,8 @@ import WeatherLocation from './components/WeatherLocation';
 import './App.css';
 
 class App extends Component {
-  render() {    
+  render() {
+    
     return (
       <MuiThemeProvider>
       <div className="App">
