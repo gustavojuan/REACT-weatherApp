@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Location from './Location';
 import WeatherData from './WeatherData/index';
 import transformWeather from './../../services/transformWeather';
-import { WINDY, SNOW, SUN } from './../../constants/weathers';
 import './styles.css';
 
 
@@ -10,13 +9,7 @@ const apikey = "a8789edde3a4b51f9d270d4710f105c0"
 const location = "Potries,es"
 const apiweather = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apikey}`;
 
-const data1 = {
-    temperature: 20,
-    weatherState: SUN,
-    humidity: 85,
-    wind: '10 m/s'
 
-}
 
 
 class WeatherLocation extends Component {
@@ -25,7 +18,7 @@ class WeatherLocation extends Component {
         super();
         this.state = {
             city: 'Buenos Aires',
-            data: data1
+            data: null
         }
         console.log('constructor');
     }
@@ -36,28 +29,14 @@ class WeatherLocation extends Component {
             .then(data => (data.json()))
             .then(weather_data => {
                 const data = transformWeather(weather_data);
-                this.setState({ data });             
+                this.setState({ data:data });             
             })
     }
 
     
     componentWillMount() {
-        console.log('componentWillMount');
-    }
-
-    componentDidMount() {
-        console.log('componentDidMount');
-    }
-
-    componentWillUpdate(nextProps, nextState) {
-        console.log('componentWillUpdate');
-    }
-
-    componentDidUpdate(){
-        console.log('componentDidUpdate');
-    }
-    
-    
+        this.handleUpdateClick();
+    }    
     
 
     render = () => {
@@ -66,8 +45,7 @@ class WeatherLocation extends Component {
         return (
             <div className='weatherLocationCont'>
                 <Location city={city} />
-                <WeatherData data={data} />
-                <button onClick={this.handleUpdateClick}>Actualizar</button>
+                {data ? <WeatherData data={data} /> : 'Cargando'}                
             </div>
         );
         
