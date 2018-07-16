@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import convert from 'convert-units';
-import {  CLOUDY, SUN, RAIN, SNOW,  THUNDER, DRIZZLE } from './../constants/weathers';
+import { CLOUD, CLOUDY, SUN, RAIN, SNOW, WINDY, THUNDER, DRIZZLE } from './../../../constants/weathers';
 
 
 const getTemp = (kelvin) => {
@@ -23,18 +23,18 @@ const getWeatherState = (weather) => {
     } else {
         return CLOUDY;
     }
+
 }
 
 const transformWeather = (weather_data) => {
-    const { weather} = weather_data
-    const { humidity, temp } = weather_data.main;
+    const { humidity, temp, weather } = weather_data.main;
     const { speed } = weather_data.wind;
-    const weatherState = getWeatherState(weather);
-    const temperature = getTemp(temp);
+    const weatherState = getWeatherState(this.weather);
+    const temperature = temp;
 
     const data = {
         humidity,
-        temperature ,
+        temperature: getTemp(temp),
         weatherState,
         wind: `${speed} m/s`
     }

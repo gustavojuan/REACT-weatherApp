@@ -26,15 +26,17 @@ const getWeatherState = (weather) => {
 }
 
 const transformWeather = (weather_data) => {
-    const { weather} = weather_data
+    console.log(weather_data);
+    debugger;
+    const {weather} = weather_data
     const { humidity, temp } = weather_data.main;
     const { speed } = weather_data.wind;
-    const weatherState = getWeatherState(weather);
-    const temperature = getTemp(temp);
+    const weatherState = getWeatherState(this.weather);
+    const temperature = temp;
 
     const data = {
         humidity,
-        temperature ,
+        temperature: getTemp(temp),
         weatherState,
         wind: `${speed} m/s`
     }
