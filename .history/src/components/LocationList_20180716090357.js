@@ -1,5 +1,5 @@
 import React from 'react';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import WeatherLocation from './WeatherLocation';
 
 const strToComponent = cities =>(
@@ -7,10 +7,12 @@ const strToComponent = cities =>(
 );
 const LocationList = ({cities}) =>(
     <div>
-        {strToComponent(cities)}      
+        {strToComponent()}
+       
+      
     </div>
 );
-LocationList.propTypes = {
-    cities: propTypes.array.isRequired,
+LocationList.PropTypes = {
+    cities : PropTypes.array.isRequired,
 }
 export default LocationList;

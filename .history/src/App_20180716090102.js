@@ -7,10 +7,7 @@ const cities = [
   'Buenos Aires, ar',
   'Madrid, es',
   'Bogotá, col',
-  'Gandia, es',
-  'Potries, es',
 ];
-
 class App extends Component {
   render() {
     return (

@@ -10,7 +10,6 @@ const cities = [
   'Gandia, es',
   'Potries, es',
 ];
-
 class App extends Component {
   render() {
     return (
