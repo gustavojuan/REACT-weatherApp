@@ -9,6 +9,7 @@ import './styles.css';
 
 const url = "https://api.openweathermap.org/data/2.5/weather"
 const apikey = "a8789edde3a4b51f9d270d4710f105c0"
+const city = "Potries,es"
 
 
 

@@ -9,6 +9,7 @@ import './styles.css';
 
 const url = "https://api.openweathermap.org/data/2.5/weather"
 const apikey = "a8789edde3a4b51f9d270d4710f105c0"
+const city = "Potries,es"
 
 
 
@@ -27,7 +28,6 @@ class WeatherLocation extends Component {
 
 
     handleUpdateClick = () => {
-        const {city } = this.state;
         const apiweather = `${url}?q=${city}&appid=${apikey}`;
         fetch(apiweather)
             .then(data => (data.json()))
